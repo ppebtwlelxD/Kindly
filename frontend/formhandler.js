@@ -34,7 +34,7 @@ function handleSubmit(event) {
   }
 
   var price = 0;
-  // item = current objekt(the price)
+  // item = current object(the price)
   value["cart"].forEach(item => (price += parseInt(item.price)));
 
   value.price = price;
@@ -43,11 +43,11 @@ function handleSubmit(event) {
   console.log(value);
 
   //sending data to server
-  //seding the datat to userdata(the server)
+  //seding the data to userdata(the server)
   try {
     const response = fetch("/userdata", {
       method: "POST", //how we send
-      mode: "cors", // sevurety thing , so that only ur own server can send to this api
+      mode: "cors", // security thing , so that only your own server can send to this api
       headers: {
         "content-type": "application/json", //what we send
       },
@@ -58,6 +58,6 @@ function handleSubmit(event) {
   }
 }
 
-// eventiliser to submit that runs this code
+// event listener to submit that runs this code
 const form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);

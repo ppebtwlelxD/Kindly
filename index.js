@@ -18,7 +18,7 @@ mongoose.connect(
   () => console.log("Database initialized...")
 );
 
-//express we want to pass the jason body
+//express we want to pass the json body
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
@@ -26,19 +26,20 @@ app.use(cors());
 //this are the frontend things
 app.use(express.static("./frontend"));
 
-// what do we do wen someone posts data to /userdata
+// what do we do when someone posts data to /userdata
 app.post("/userdata", (req, res) => {
-    console.log("received user data")
+  console.log("received user data");
   try {
-    // making a mongodb sceema (userdata file)
+    // making a mongodb schema  (userdata file)
     var userdata = new Userdata(req.body);
-    // send the sceema to the database
+    // send the schema to the database
     userdata
       .save()
       .then((data) => {
-          res.status(200).json(data)})
+        res.status(200).json(data);
+      })
       .catch((error) => {
-        // if error whit seding to the server
+        // if error with sending to the server
         console.log(error);
       });
     //if app.post error
