@@ -3,7 +3,11 @@ function handleSubmit(event) {
 
   const data = new FormData(event.target);
 
+  var name = document.getElementById("name");
+  var username = name.value
+  
   const value = {
+    buyer_name: username,
     url: window.location.href,
     currency: "NOK",
     status: "open",

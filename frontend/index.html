@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
+    <h1>Amaztore</h1>
 
-<form>
-  <input type="checkbox" id="dryer" name="dryer">
-  <label for="dryret">dryret</label><br>
-  <input type="checkbox" id="toaster" name="toaster">
-  <label for="toster">toster</label><br>
-  <input type="submit" value="Submit">
-</form>
+    <div id="user_box">
+      <input type="text" id="name" name="name" />
+      <label for="name">enter your name</label><br />
+      <button onclick="displayer()">Enter Store</button>
+    </div>
 
-<script src="formhandler.js"></script>
+    <div id="existing_user" style="display: none;"></div>
 
-</body>
+    <form id="store" style="display: none;">
+      <h3>Select products you want to purchase</h3>
+      <input type="checkbox" id="dryer" name="dryer" />
+      <label for="dryret">dryret</label><br />
+      <input type="checkbox" id="toaster" name="toaster" />
+      <label for="toster">toster</label><br />
+      <input type="submit" value="buy" />
+    </form>
+
+    <script src="formhandler.js"></script>
+    <script src="displayer.js"></script>
+  </body>
 </html>

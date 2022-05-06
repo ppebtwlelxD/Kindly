@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors"); //not realy needed
 const Userdata = require("./userdata");
+const Username = require("./username");
 
 const mongoURI =
   "mongodb+srv://Kindly:Kindly@cluster0.3yfzb.mongodb.net/kindlyDatabase?retryWrites=true&w=majority";
@@ -43,6 +44,38 @@ app.post("/userdata", (req, res) => {
         console.log(error);
       });
     //if app.post error
+  } catch (error) {
+    res.status(500).json({
+      error: error,
+    });
+  }
+});
+
+// what do we do when someone posts data to /username
+app.post("/username", (req, res) => {
+  console.log("received user name");
+  console.log(req.body);
+  try {
+    const user = Username.findOne(
+      { name: req.body.name },
+      function (err, existing_user) {
+        if (existing_user == null) {
+          console.log("this user dose not exist");
+          // making a mongodb schema  (userdata file)
+          var userdata = new Username(req.body);
+          // send the schema to the database
+          userdata
+            .save()
+            .then((data) => {
+              res.status(200).json(data);
+            })
+            .catch((error) => {
+              // if error with sending to the server
+              console.log(error);
+            });
+        }
+      }
+    );
   } catch (error) {
     res.status(500).json({
       error: error,
