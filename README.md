@@ -1,6 +1,3 @@
-# Kindly
- Kindly task
-
 ## Installation
 
 npm install
